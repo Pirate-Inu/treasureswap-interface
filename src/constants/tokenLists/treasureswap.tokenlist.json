@@ -1,0 +1,22 @@
+{
+    "name": "Treasure Swap Token List",
+    "timestamp": "2021-06-03T19:58:02.923Z",
+    "version": {
+      "major": 1,
+      "minor": 0,
+      "patch": 0
+    },
+    "tags": {},
+    "logoURI": "ipfs://QmNa8mQkrNKp1WEEeGjFezDmDeodkWRevGFN8JCV7b4Xir",
+    "keywords": ["Treasureswap"],
+    "tokens": [
+      {
+        "name": "Pirate Inu",
+        "address": "0xef5b32486ed432b804a51d129f4d2fbdf18057ec",
+        "symbol": "KISHU",
+        "decimals": 9,
+        "chainId": 1,
+        "logoURI": "https://pinu.finance/assets/coin.png"
+      }
+    ]
+  }
