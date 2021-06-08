@@ -194,6 +194,7 @@ export default function PoolFinder() {
 
       <CurrencySearchModal
         isOpen={showSearch}
+        isModifyable={true}
         onCurrencySelect={handleCurrencySelect}
         onDismiss={handleSearchDismiss}
         showCommonBases

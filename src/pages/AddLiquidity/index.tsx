@@ -362,6 +362,7 @@ export default function AddLiquidity({
                 </ColumnCenter>
               ))}
             <CurrencyInputPanel
+              isModifyable={true}
               value={formattedAmounts[Field.CURRENCY_A]}
               onUserInput={onFieldAInput}
               onMax={() => {
@@ -377,6 +378,7 @@ export default function AddLiquidity({
               <Plus size="16" color={theme.text2} />
             </ColumnCenter>
             <CurrencyInputPanel
+              isModifyable={true}
               value={formattedAmounts[Field.CURRENCY_B]}
               onUserInput={onFieldBInput}
               onCurrencySelect={handleCurrencyBSelect}

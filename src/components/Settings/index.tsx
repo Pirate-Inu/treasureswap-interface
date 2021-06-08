@@ -179,7 +179,7 @@ export default function SettingsTab() {
           </AutoColumn>
         </ModalContentWrapper>
       </Modal>
-      <StyledMenuButton onClick={toggle} id="open-settings-dialog-button">
+      {/* <StyledMenuButton onClick={toggle} id="open-settings-dialog-button">
         <StyledMenuIcon />
         {expertMode ? (
           <EmojiWrapper>
@@ -188,7 +188,7 @@ export default function SettingsTab() {
             </span>
           </EmojiWrapper>
         ) : null}
-      </StyledMenuButton>
+      </StyledMenuButton> */}
       {open && (
         <MenuFlyout>
           <AutoColumn gap="md" style={{ padding: '1rem' }}>

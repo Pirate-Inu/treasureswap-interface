@@ -117,6 +117,7 @@ const StyledBalanceMax = styled.button`
 
 interface CurrencyInputPanelProps {
   value: string
+  isModifyable: boolean
   onUserInput: (value: string) => void
   onMax?: () => void
   showMaxButton: boolean
@@ -134,6 +135,7 @@ interface CurrencyInputPanelProps {
 }
 
 export default function CurrencyInputPanel({
+  isModifyable,
   value,
   onUserInput,
   onMax,
@@ -237,6 +239,7 @@ export default function CurrencyInputPanel({
       {!disableCurrencySelect && onCurrencySelect && (
         <CurrencySearchModal
           isOpen={modalOpen}
+          isModifyable={isModifyable}
           onDismiss={handleDismissSearch}
           onCurrencySelect={onCurrencySelect}
           selectedCurrency={currency}

@@ -23,6 +23,7 @@ import useTheme from 'hooks/useTheme'
 import ImportRow from './ImportRow'
 import { Edit } from 'react-feather'
 import useDebounce from 'hooks/useDebounce'
+import { useUserAddedTokens } from 'state/user/hooks'
 
 const ContentWrapper = styled(Column)`
   width: 100%;
@@ -42,6 +43,7 @@ const Footer = styled.div`
 
 interface CurrencySearchProps {
   isOpen: boolean
+  isModifyable: boolean
   onDismiss: () => void
   selectedCurrency?: Currency | null
   onCurrencySelect: (currency: Currency) => void
@@ -59,6 +61,7 @@ export function CurrencySearch({
   showCommonBases,
   onDismiss,
   isOpen,
+  isModifyable,
   showManageView,
   showImportView,
   setImportToken
@@ -107,8 +110,13 @@ export function CurrencySearch({
     return filteredTokens.sort(tokenComparator)
   }, [filteredTokens, tokenComparator])
 
-  const filteredSortedTokens = useSortedTokensByQuery(sortedTokens, debouncedQuery)
+  let filteredSortedTokens = useSortedTokensByQuery(sortedTokens, debouncedQuery)
 
+  const userTokens = useUserAddedTokens()
+
+  if (!isModifyable)
+    filteredSortedTokens = filteredSortedTokens.filter(a => userTokens.find(b => b.address == a.address) == null)
+  console.log(filteredSortedTokens)
   const handleCurrencySelect = useCallback(
     (currency: Currency) => {
       onCurrencySelect(currency)
@@ -149,7 +157,6 @@ export function CurrencySearch({
     },
     [filteredSortedTokens, handleCurrencySelect, debouncedQuery]
   )
-
   // menu ui
   const [open, toggle] = useToggle(false)
   const node = useRef<HTMLDivElement>()
@@ -218,16 +225,20 @@ export function CurrencySearch({
         </Column>
       )}
       <Footer>
-        <Row justify="center">
-          <ButtonText onClick={showManageView} color={theme.blue1} className="list-token-manage-button">
-            <RowFixed>
-              <IconWrapper size="16px" marginRight="6px">
-                <Edit />
-              </IconWrapper>
-              <TYPE.main color={theme.blue1}>Manage</TYPE.main>
-            </RowFixed>
-          </ButtonText>
-        </Row>
+        {isModifyable === true ? (
+          <Row justify="center">
+            <ButtonText onClick={showManageView} color={theme.blue1} className="list-token-manage-button">
+              <RowFixed>
+                <IconWrapper size="16px" marginRight="6px">
+                  <Edit />
+                </IconWrapper>
+                <TYPE.main color={theme.blue1}>Manage</TYPE.main>
+              </RowFixed>
+            </ButtonText>
+          </Row>
+        ) : (
+          <TYPE.black>You can only swap to verified coins</TYPE.black>
+        )}
       </Footer>
     </ContentWrapper>
   )

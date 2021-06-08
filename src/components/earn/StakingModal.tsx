@@ -201,6 +201,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
             <CloseIcon onClick={wrappedOnDismiss} />
           </RowBetween>
           <CurrencyInputPanel
+            isModifyable={true}
             value={typedValue}
             onUserInput={onUserInput}
             onMax={handleMax}
