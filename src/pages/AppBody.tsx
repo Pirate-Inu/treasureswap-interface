@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-
 export const BodyWrapper = styled.div`
   position: relative;
   max-width: 420px;

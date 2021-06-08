@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useEffect, useMemo, useState } from 're
 import { ArrowDown } from 'react-feather'
 import ReactGA from 'react-ga'
 import { Text } from 'rebass'
-import { ThemeContext } from 'styled-components'
+import styled, { ThemeContext } from 'styled-components'
 import AddressInputPanel from '../../components/AddressInputPanel'
 import { ButtonError, ButtonLight, ButtonPrimary, ButtonConfirmed } from '../../components/Button'
 import Card, { GreyCard } from '../../components/Card'
@@ -20,7 +20,7 @@ import TradePrice from '../../components/swap/TradePrice'
 import TokenWarningModal from '../../components/TokenWarningModal'
 import ProgressSteps from '../../components/ProgressSteps'
 import SwapHeader from '../../components/swap/SwapHeader'
-
+import Parrot from '../../assets/images/013-parrot.svg'
 import { INITIAL_ALLOWED_SLIPPAGE } from '../../constants'
 import { getTradeVersion } from '../../data/V1'
 import { useActiveWeb3React } from '../../hooks'
@@ -50,6 +50,14 @@ import UnsupportedCurrencyFooter from 'components/swap/UnsupportedCurrencyFooter
 import { isTradeBetter } from 'utils/trades'
 import { RouteComponentProps } from 'react-router-dom'
 import SwapStakeButtons from 'components/swap/SwapStakeButtons'
+
+export const ParrotImage = styled.img`
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 43px;
+  top: -43px;
+`
 
 export default function Swap({ history }: RouteComponentProps) {
   const loadedUrlParams = useDefaultsFromURLSearch()
@@ -311,6 +319,7 @@ export default function Swap({ history }: RouteComponentProps) {
       <SwapPoolTabs active={'swap'} />
       <SwapStakeButtons />
       <AppBody>
+        <ParrotImage src={Parrot} />
         <SwapHeader />
         <Wrapper id="swap-page">
           <ConfirmSwapModal

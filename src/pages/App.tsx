@@ -43,6 +43,11 @@ const HeaderWrapper = styled.div`
   width: 100%;
   justify-content: space-between;
 `
+const WavesWrapper = styled.div`
+  width: 100%;
+  position: absolute;
+  bottom: -10px;
+`
 
 const BodyWrapper = styled.div`
   display: flex;
@@ -78,6 +83,7 @@ export default function App() {
     <Suspense fallback={null}>
       <Route component={GoogleAnalyticsReporter} />
       <Route component={DarkModeQueryParamReader} />
+
       <AppWrapper>
         <URLWarning />
         <HeaderWrapper>
@@ -117,6 +123,19 @@ export default function App() {
           <Marginer />
         </BodyWrapper>
       </AppWrapper>
+      <WavesWrapper>
+        <svg width="100%" viewBox="0 0 1440 309" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M405.115 178.613C65.6537 219.949 -196.133 108.094 -284.593 47L-374 282.928L1091.99 319L1241 198.111C1241.47 165.614 1194.73 93.7957 1004 66.4982C765.58 32.3763 829.442 126.943 405.115 178.613Z"
+            fill="#0282BD"
+          />
+          <path
+            d="M669.115 192.097C329.654 252.429 67.8672 89.1709 -20.5933 0L-110 344.351L1355.99 397L1505 220.556C1505.47 173.124 1458.73 68.3011 1268 28.4588C1029.58 -21.3441 1093.44 116.681 669.115 192.097Z"
+            fill="#009FE9"
+          />
+        </svg>
+      </WavesWrapper>
+      
     </Suspense>
   )
 }
