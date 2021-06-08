@@ -1,22 +1,16 @@
-import { CurrencyAmount, Token } from '@uniswap/sdk-core'
-import React, { useMemo } from 'react'
+import { ChainId, TokenAmount } from '@uniswap/sdk'
+import React from 'react'
 import { X } from 'react-feather'
-import styled from 'styled-components/macro'
-import tokenLogo from '../../assets/images/token-logo.png'
-import { UNI } from '../../constants/tokens'
-import { useTotalSupply } from '../../hooks/useTotalSupply'
-import { useActiveWeb3React } from '../../hooks/web3'
-import { useMerkleDistributorContract } from '../../hooks/useContract'
-import useCurrentBlockTimestamp from '../../hooks/useCurrentBlockTimestamp'
-import { useTotalUniEarned } from '../../state/stake/hooks'
+import styled from 'styled-components'
+import tokenLogo from '../../assets/images/pinu-coin.svg'
+import { UNI } from '../../constants'
+import { useActiveWeb3React } from '../../hooks'
 import { useAggregateUniBalance, useTokenBalance } from '../../state/wallet/hooks'
-import { ExternalLink, StyledInternalLink, TYPE, UniTokenAnimated } from '../../theme'
-import { computeUniCirculation } from '../../utils/computeUniCirculation'
-import useUSDCPrice from '../../hooks/useUSDCPrice'
+import { ExternalLink, TYPE, PinuLogo } from '../../theme'
+import useUSDCPrice from '../../utils/useUSDCPrice'
 import { AutoColumn } from '../Column'
 import { RowBetween } from '../Row'
-import { Break, CardBGImage, CardNoise, CardSection, DataCard } from '../earn/styled'
-import { Trans } from '@lingui/macro'
+import { Break, CardNoise, CardSection, DataCard } from '../earn/styled'
 
 const ContentWrapper = styled(AutoColumn)`
   width: 100%;
@@ -24,7 +18,6 @@ const ContentWrapper = styled(AutoColumn)`
 
 const ModalUpper = styled(DataCard)`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  background: radial-gradient(76.02% 75.41% at 1.84% 0%, #ff007a 0%, #021d43 100%);
   padding: 0.5rem;
 `
 
@@ -46,29 +39,17 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
   const uni = chainId ? UNI[chainId] : undefined
 
   const total = useAggregateUniBalance()
-  const uniBalance: CurrencyAmount<Token> | undefined = useTokenBalance(account ?? undefined, uni)
-  const uniToClaim: CurrencyAmount<Token> | undefined = useTotalUniEarned()
+  const uniBalance: TokenAmount | undefined = useTokenBalance(account ?? undefined, uni)
 
-  const totalSupply: CurrencyAmount<Token> | undefined = useTotalSupply(uni)
   const uniPrice = useUSDCPrice(uni)
-  const blockTimestamp = useCurrentBlockTimestamp()
-  const unclaimedUni = useTokenBalance(useMerkleDistributorContract()?.address, uni)
-  const circulation: CurrencyAmount<Token> | undefined = useMemo(
-    () =>
-      blockTimestamp && uni && chainId === 1 ? computeUniCirculation(uni, blockTimestamp, unclaimedUni) : totalSupply,
-    [blockTimestamp, chainId, totalSupply, unclaimedUni, uni]
-  )
 
   return (
     <ContentWrapper gap="lg">
       <ModalUpper>
-        <CardBGImage />
         <CardNoise />
         <CardSection gap="md">
           <RowBetween>
-            <TYPE.white color="white">
-              <Trans>Your UNI Breakdown</Trans>
-            </TYPE.white>
+            <TYPE.white color="white">Your PINU Breakdown</TYPE.white>
             <StyledClose stroke="white" onClick={() => setShowUniBalanceModal(false)} />
           </RowBetween>
         </CardSection>
@@ -77,30 +58,15 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
           <>
             <CardSection gap="sm">
               <AutoColumn gap="md" justify="center">
-                <UniTokenAnimated width="48px" src={tokenLogo} />{' '}
+                <PinuLogo width="64px" src={tokenLogo} />{' '}
                 <TYPE.white fontSize={48} fontWeight={600} color="white">
-                  {total?.toFixed(2, { groupSeparator: ',' })}
+                  {total?.toFixed(0, { groupSeparator: ',' })} B
                 </TYPE.white>
               </AutoColumn>
               <AutoColumn gap="md">
                 <RowBetween>
-                  <TYPE.white color="white">
-                    <Trans>Balance:</Trans>
-                  </TYPE.white>
-                  <TYPE.white color="white">{uniBalance?.toFixed(2, { groupSeparator: ',' })}</TYPE.white>
-                </RowBetween>
-                <RowBetween>
-                  <TYPE.white color="white">
-                    <Trans>Unclaimed:</Trans>
-                  </TYPE.white>
-                  <TYPE.white color="white">
-                    {uniToClaim?.toFixed(4, { groupSeparator: ',' })}{' '}
-                    {uniToClaim && uniToClaim.greaterThan('0') && (
-                      <StyledInternalLink onClick={() => setShowUniBalanceModal(false)} to="/uni">
-                        <Trans>(claim)</Trans>
-                      </StyledInternalLink>
-                    )}
-                  </TYPE.white>
+                  <TYPE.white color="white">Balance:</TYPE.white>
+                  <TYPE.white color="white">{uniBalance?.toFixed(2, { groupSeparator: ',' })} B</TYPE.white>
                 </RowBetween>
               </AutoColumn>
             </CardSection>
@@ -110,26 +76,20 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
         <CardSection gap="sm">
           <AutoColumn gap="md">
             <RowBetween>
-              <TYPE.white color="white">
-                <Trans>UNI price:</Trans>
-              </TYPE.white>
+              <TYPE.white color="white">1 Billion PINU price:</TYPE.white>
               <TYPE.white color="white">${uniPrice?.toFixed(2) ?? '-'}</TYPE.white>
             </RowBetween>
             <RowBetween>
-              <TYPE.white color="white">
-                <Trans>UNI in circulation:</Trans>
-              </TYPE.white>
-              <TYPE.white color="white">{circulation?.toFixed(0, { groupSeparator: ',' })}</TYPE.white>
+              <TYPE.white color="white">PINU in circulation:</TYPE.white>
+              <TYPE.white color="white">1,000,000,000,000,000</TYPE.white>
             </RowBetween>
             <RowBetween>
-              <TYPE.white color="white">
-                <Trans>Total Supply</Trans>
-              </TYPE.white>
-              <TYPE.white color="white">{totalSupply?.toFixed(0, { groupSeparator: ',' })}</TYPE.white>
+              <TYPE.white color="white">Total Supply</TYPE.white>
+              <TYPE.white color="white">1,000,000,000,000,000</TYPE.white>
             </RowBetween>
-            {uni && uni.chainId === 1 ? (
-              <ExternalLink href={`https://info.uniswap.org/token/${uni.address}`}>
-                <Trans>View UNI Analytics</Trans>
+            {uni && uni.chainId === ChainId.MAINNET ? (
+              <ExternalLink href={`https://v2.uniswap.info/token/${uni.address}`}>
+                View PINU Pair Analytics on Uniswap
               </ExternalLink>
             ) : null}
           </AutoColumn>

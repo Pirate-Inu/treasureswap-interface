@@ -9,9 +9,12 @@ import usePrevious from 'hooks/usePrevious'
 import Manage from './Manage'
 import { TokenList } from '@uniswap/token-lists'
 import { ImportList } from './ImportList'
+import { TYPE } from 'theme'
+import { type } from 'os'
 
 interface CurrencySearchModalProps {
   isOpen: boolean
+  isModifyable: boolean
   onDismiss: () => void
   selectedCurrency?: Currency | null
   onCurrencySelect: (currency: Currency) => void
@@ -28,6 +31,7 @@ export enum CurrencyModalView {
 
 export default function CurrencySearchModal({
   isOpen,
+  isModifyable,
   onDismiss,
   onCurrencySelect,
   selectedCurrency,
@@ -69,6 +73,7 @@ export default function CurrencySearchModal({
       {modalView === CurrencyModalView.search ? (
         <CurrencySearch
           isOpen={isOpen}
+          isModifyable={isModifyable}
           onDismiss={onDismiss}
           onCurrencySelect={handleCurrencySelect}
           selectedCurrency={selectedCurrency}

@@ -1,46 +1,9 @@
-# Uniswap Interface
+# Treasure Swap Interface
 
-[![Unit Tests](https://github.com/Uniswap/uniswap-interface/actions/workflows/unit-tests.yaml/badge.svg)](https://github.com/Uniswap/uniswap-interface/actions/workflows/unit-tests.yaml)
-[![Integration Tests](https://github.com/Uniswap/uniswap-interface/actions/workflows/integration-tests.yaml/badge.svg)](https://github.com/Uniswap/uniswap-interface/actions/workflows/integration-tests.yaml)
-[![Lint](https://github.com/Uniswap/uniswap-interface/actions/workflows/lint.yml/badge.svg)](https://github.com/Uniswap/uniswap-interface/actions/workflows/lint.yml)
-[![Release](https://github.com/Uniswap/uniswap-interface/actions/workflows/release.yaml/badge.svg)](https://github.com/Uniswap/uniswap-interface/actions/workflows/release.yaml)
-[![Crowdin](https://badges.crowdin.net/uniswap-interface/localized.svg)](https://crowdin.com/project/uniswap-interface)
+An open source interface for Treasure Swap -- a protocol for decentralized exchange of Ethereum tokens.
 
-An open source interface for Uniswap -- a protocol for decentralized exchange of Ethereum tokens.
-
-- Website: [uniswap.org](https://uniswap.org/)
-- Interface: [app.uniswap.org](https://app.uniswap.org)
-- Docs: [uniswap.org/docs/](https://uniswap.org/docs/)
-- Twitter: [@Uniswap](https://twitter.com/Uniswap)
-- Reddit: [/r/Uniswap](https://www.reddit.com/r/Uniswap/)
-- Email: [contact@uniswap.org](mailto:contact@uniswap.org)
-- Discord: [Uniswap](https://discord.gg/FCfyBSbCU5)
-- Whitepapers:
-  - [V1](https://hackmd.io/C-DvwDSfSxuh-Gd4WKE_ig)
-  - [V2](https://uniswap.org/whitepaper.pdf)
-  - [V3](https://uniswap.org/whitepaper-v3.pdf)
-
-## Accessing the Uniswap Interface
-
-To access the Uniswap Interface, use an IPFS gateway link from the
-[latest release](https://github.com/Uniswap/uniswap-interface/releases/latest),
-or visit [app.uniswap.org](https://app.uniswap.org).
-
-## Contributions
-
-See [CONTRIBUTING](./CONTRIBUTING.md).
-
-## Accessing Uniswap V2
-
-The Uniswap Interface supports swapping, adding liquidity, removing liquidity and migrating liquidity for 
-Uniswap protocol V2.
-
-- Swap on Uniswap V2: https://app.uniswap.org/#/swap?use=v2
-- View V2 liquidity: https://app.uniswap.org/#/pool/v2
-- Add V2 liquidity: https://app.uniswap.org/#/add/v2
-- Migrate V2 liquidity to V3: https://app.uniswap.org/#/migrate/v2
-
-## Accessing Uniswap V1
- 
-The Uniswap V1 interface for mainnet and testnets is accessible via IPFS gateways 
-linked from the [v1.0.0 release](https://github.com/Uniswap/uniswap-interface/releases/tag/v1.0.0).
+- Website: [pinu.finance](https://pinu.finance/)
+- Uniswap link: [app.uniswap.org](https://app.uniswap.org/#/swap?outputCurrency=0xef5b32486ed432b804a51d129f4d2fbdf18057ec&use=V2)
+- Twitter: [@inuPirate](https://twitter.com/inupirate)
+- Email: [contact@pinu.finance](mailto:contact@uniswap.org)
+- Whitepaper: [Link](https://pinu.finance/assets/pinu_whitepaper_v1.pdf)

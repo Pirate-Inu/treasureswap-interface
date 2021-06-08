@@ -183,7 +183,7 @@ export const ButtonUNIGradient = styled(ButtonPrimary)`
   height: 36px;
   font-weight: 500;
   background-color: ${({ theme }) => theme.bg3};
-  background: radial-gradient(174.47% 188.91% at 1.84% 0%, #ff007a 0%, #2172e5 100%), #edeef2;
+  background: radial-gradient(115.45% 1091.01% at 100% 100%, #009fe9 0%, #40ffba 100%);
   width: fit-content;
   position: relative;
   cursor: pointer;
