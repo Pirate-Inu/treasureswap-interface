@@ -8,8 +8,6 @@ import usePrevious from 'hooks/usePrevious'
 import Manage from './Manage'
 import { TokenList } from '@uniswap/token-lists'
 import { ImportList } from './ImportList'
-import { TYPE } from 'theme'
-import { type } from 'os'
 
 interface CurrencySearchModalProps {
   isOpen: boolean

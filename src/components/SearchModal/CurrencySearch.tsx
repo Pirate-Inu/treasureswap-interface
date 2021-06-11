@@ -115,7 +115,7 @@ export function CurrencySearch({
   const userTokens = useUserAddedTokens()
 
   if (!isModifyable)
-    filteredSortedTokens = filteredSortedTokens.filter(a => userTokens.find(b => b.address == a.address) == null)
+    filteredSortedTokens = filteredSortedTokens.filter(a => userTokens.find(b => b.address === a.address) == null)
   console.log(filteredSortedTokens)
   const handleCurrencySelect = useCallback(
     (currency: Currency) => {

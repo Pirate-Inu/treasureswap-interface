@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from 'react'
-import { Settings, X } from 'react-feather'
+import { X } from 'react-feather'
 import ReactGA from 'react-ga'
 import { Text } from 'rebass'
 import styled, { ThemeContext } from 'styled-components'
@@ -21,19 +21,6 @@ import { RowBetween, RowFixed } from '../Row'
 import Toggle from '../Toggle'
 import TransactionSettings from '../TransactionSettings'
 
-const StyledMenuIcon = styled(Settings)`
-  height: 20px;
-  width: 20px;
-
-  > * {
-    stroke: ${({ theme }) => theme.text2};
-  }
-
-  :hover {
-    opacity: 0.7;
-  }
-`
-
 const StyledCloseIcon = styled(X)`
   height: 20px;
   width: 20px;
@@ -44,36 +31,6 @@ const StyledCloseIcon = styled(X)`
   > * {
     stroke: ${({ theme }) => theme.text1};
   }
-`
-
-const StyledMenuButton = styled.button`
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border: none;
-  background-color: transparent;
-  margin: 0;
-  padding: 0;
-  height: 35px;
-
-  padding: 0.15rem 0.5rem;
-  border-radius: 0.5rem;
-
-  :hover,
-  :focus {
-    cursor: pointer;
-    outline: none;
-  }
-
-  svg {
-    margin-top: 2px;
-  }
-`
-const EmojiWrapper = styled.div`
-  position: absolute;
-  bottom: -6px;
-  right: 0px;
-  font-size: 14px;
 `
 
 const StyledMenu = styled.div`
