@@ -320,7 +320,7 @@ export default function Header() {
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
       </Modal>
       <HeaderRow>
-        <Title href=".">
+        <Title href="https://pinu.io/">
           <UniIcon>
             <img width={'36px'} src={LogoDark} alt="logo" />
           </UniIcon>
