@@ -90,7 +90,7 @@ export function colors(darkMode: boolean): Colors {
 
 export function theme(darkMode: boolean): DefaultTheme {
   return {
-    ...colors(darkMode),
+    ...colors(true),
 
     grids: {
       sm: 8,
